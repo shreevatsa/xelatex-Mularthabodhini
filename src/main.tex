@@ -40,7 +40,8 @@
 \usepackage{longtable,ltabptch}
 \usepackage{draftwatermark}
 \SetWatermarkLightness{0.9}
-\SetWatermarkColor[rgb]{1,0.9,0.9}
+% Added braces because of https://tex.stackexchange.com/a/540961
+\SetWatermarkColor[rgb]{{1,0.9,0.9}}
 \SetWatermarkText{\mdseries PROOF}
 \SetWatermarkText{\mdseries }
 \SetWatermarkFontSize{4.5cm}
@@ -87,6 +88,8 @@
 \setotherlanguage{english}
 
 \setmainfont[Script=Devanagari, Path = ./, Extension = .ttf,UprightFont = *-Regular, BoldItalicFont = *-BoldItalic, BoldFont = *-Bold, ItalicFont = *-Italic, Mapping=devanagaridigits]{ChanakyaSanskrit}
+% Same as above. Apparently \devfont was automatically defined in TeX Live 2019 but needs to be explicitly defined in TeX Live 2020.
+\newfontfamily\devfont[Script=Devanagari, Path = ./, Extension = .ttf,UprightFont = *-Regular, BoldItalicFont = *-BoldItalic, BoldFont = *-Bold, ItalicFont = *-Italic, Mapping=devanagaridigits]{ChanakyaSanskrit}
 \newfontfamily\englishfont[Path = ./, Extension = .ttf,UprightFont = *R, BoldItalicFont = *BI, BoldFont = *B, ItalicFont = *I]{CharisSIL}
 \newfontfamily\unifont[Path = ./, Extension = .ttf,AutoFakeBold=2.0]{arialunicodems}
 
