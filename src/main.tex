@@ -1,0 +1,334 @@
+% This file is part of Mūlārthabodhinī XeLaTeX Source Code
+
+% Mūlārthabodhinī XeLaTeX Source Code is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+% Mūlārthabodhinī XeLaTeX Source Code is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License along with Mūlārthabodhinī XeLaTeX Source Code. If not, see <https://www.gnu.org/licenses/>.
+
+\documentclass[twoside]{book}
+\usepackage[usenames,dvipsnames]{xcolor}
+% Book size is Pinched Crown Quarto (PC4): 246 mm by 174 mm
+\usepackage[showframe=false,dvips=false,pdftex=false,vtex=false,top=25mm,left=19mm,bottom=21.5mm,right=17.5mm,paperwidth=174mm,paperheight=246mm]{geometry}
+% 3 mm bleed with crop marks
+% \usepackage[noaxes,noinfo,cam,dvips,pdftex,center,height=252mm,width=180mm]{crop}
+%\usepackage[grid,gridcolor=red!20,subgridcolor=green!20,gridunit=mm]{eso-pic}
+\makeatletter
+\AtBeginDocument{%
+  % code from eso-pic, executed during load, but needed to properly
+  % setting up the grid
+  \ifESO@texcoord
+    \def\ESO@yoffsetI{\z@}\def\ESO@yoffsetII{-\paperheight}%
+    \edef\ESO@griddeltaY{-\ESO@griddelta}\edef\ESO@gridDeltaY{-\ESO@gridDelta}%
+  \else
+    \def\ESO@yoffsetI{-\paperheight}\def\ESO@yoffsetII{\z@}%
+    \edef\ESO@griddeltaY{\ESO@griddelta}\edef\ESO@gridDeltaY{\ESO@gridDelta}%
+  \fi
+}
+\makeatother
+\usepackage{emptypage}
+\usepackage{relsize}
+\usepackage{multicol}
+\usepackage{pdfpages}
+\usepackage{tocloft}
+\usepackage{calc}
+\usepackage{fancyhdr}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{longtable,ltabptch}
+\usepackage{draftwatermark}
+\SetWatermarkLightness{0.9}
+\SetWatermarkColor[rgb]{1,0.9,0.9}
+\SetWatermarkText{\mdseries PROOF}
+\SetWatermarkText{\mdseries }
+\SetWatermarkFontSize{4.5cm}
+\usepackage{setspace}
+\usepackage{lineno}
+\renewcommand\linenumberfont{\normalfont\bfseries\small}
+% Uncomment the following command for page wise line numbers (needed in proofreading stage)
+%\pagewiselinenumbers
+\usepackage{titlesec} 
+\usepackage[perpage]{footmisc}
+\renewcommand{\thefootnote}{\devanagarinumeral{footnote}}
+\renewcommand{\footnotelayout}{\fontsize{13.5}{13.5}\selectfont\mdseries}
+\makeatletter
+	\long\def\@makefntext#1{\parindent 1em\noindent 
+		\footnotelayout \fontsize{13.5}{13.5}\selectfont
+		\hb@xt@0.8em{%
+			\hss\@textsuperscript{\fontsize{8}{\baselineskip}\selectfont\@thefnmark}}#1}% 
+\makeatother
+
+\usepackage[singlelinecheck=off]{caption}
+\DeclareCaptionFormat{myformat}{\fontsize{14}{\baselineskip}\selectfont#1#2#3}
+\captionsetup{aboveskip=0pt,belowskip=0pt,margin=0pt,justification=raggedleft,font=md,format=myformat}
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\titleformat{\chapter}[display]
+  {\bfseries\Huge\centering}
+  {\chaptertitlename}
+  {0pt}
+  {}
+  []
+\titlespacing{\chapter}{0pt}{30pt}{15pt}
+\def\pfill{\unskip~\dotfill\penalty500 
+  \strut\nobreak\leaders\hbox to.6em{\hss.\hss}\hfil~\ignorespaces}
+\def\efill{\hfill\nopagebreak}
+\usepackage{ragged2e}
+\raggedbottom
+\usepackage[base]{babel}
+\usepackage{polyglossia}
+%\usepackage{fontspec}
+\usepackage{metalogo}
+%\setmainfont{Charis SIL} 
+%\newfontfamily\nagarifont[Script=Devanagari]{NMCP}
+\setmainlanguage{hindi}
+\setotherlanguage{english}
+
+\setmainfont[Script=Devanagari, Path = ./, Extension = .ttf,UprightFont = *-Regular, BoldItalicFont = *-BoldItalic, BoldFont = *-Bold, ItalicFont = *-Italic, Mapping=devanagaridigits]{ChanakyaSanskrit}
+\newfontfamily\englishfont[Path = ./, Extension = .ttf,UprightFont = *R, BoldItalicFont = *BI, BoldFont = *B, ItalicFont = *I]{CharisSIL}
+\newfontfamily\unifont[Path = ./, Extension = .ttf,AutoFakeBold=2.0]{arialunicodems}
+
+\begin{hyphenrules}{hindi}
+\end{hyphenrules}
+
+\newcommand{\devanagarinumeral}[1]{%
+  \devanagaridigits{\number\csname c@#1\endcsname}}
+
+% Lotus vector
+\newcommand{\paraseplotus}{
+\vspace{-1mm}
+\begin{center} 
+   \includegraphics[scale=1]{lotus.png} 
+\end{center}
+\vspace{-5mm}}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
+\usepackage{hyperref,bookmark}
+\hypersetup{
+	pdftitle={Śrībhaktamāla (with the Mūlārthabodhinī commentary)},
+	pdfauthor={Gosvāmī Nābhādāsa, Jagadguru Rāmānandācārya Svāmī Rāmabhadrācārya},
+	pdfkeywords={Bhaktamāla, Nābhādāsa, Rāmabhadrācārya, Hinduism},
+	pdfsubject={A Hindi commentary on the Bhaktamāla of Gosvāmī Nābhādāsa},
+	bookmarksnumbered,
+	pdfpagelayout=TwoPageRight,
+	bookmarksopen=true,
+	pdfstartview={FitH},
+	hidelinks
+}
+\begin{document}
+\newlength{\mylenone}
+\newlength{\mylentwo}
+\newlength{\mylenthree}
+\newlength{\mylenfour}
+\newlength{\mylen}
+\newlength{\myl}
+
+\frontmatter
+% \renewcommand{\cftsecdotsep}{\cftnodots}
+\renewcommand\cftchapfont{\fontsize{19}{35}\selectfont\devfont\bfseries}
+\renewcommand\cftchappagefont{\fontsize{19}{35}\selectfont\devfont\bfseries}
+\renewcommand\cftsecfont{\fontsize{17}{21}\selectfont\devfont}
+\renewcommand\cftsecpagefont{\fontsize{17}{21}\selectfont\devfont}
+\fancypagestyle{plain}{ %
+  \fancyhf{} % remove everything
+  \renewcommand{\headrulewidth}{0pt} % remove lines as well
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+% \fancyfoot[C]{\thepage}
+\fancyfoot[C]{}
+
+% Front cover from the dust jacket PDF
+\includepdf[pages=1,trim=257.75mm 3mm 58.75mm 3mm,clip]{DustJacket}
+
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+\vspace*{4mm}
+{\fontsize{20}{24}\selectfont \textbf{श्रीभक्तमाल—मूलार्थबोधिनी टीका सहित}}\\
+\end{center}
+\cleardoublepage
+\thispagestyle{empty}
+\begin{center}
+\vspace*{4.5mm}
+{\fontsize{26}{39}\selectfont \textbf{गोस्वामी नारायणदास नाभाजी विरचित}}\\
+\vspace*{3mm}
+{\fontsize{36}{54}\selectfont \textbf{श्रीभक्तमाल}}\\
+\vspace*{4.5mm}
+{\fontsize{28}{42}\selectfont \textbf{(मूलार्थबोधिनी टीका सहित)}}\\
+\vfill
+{\fontsize{18}{27}\selectfont टीकाकार}\\
+\vspace*{2.5mm}
+{\fontsize{18}{27}\selectfont धर्मचक्रवर्ती महामहोपाध्याय कविकुलरत्न वाचस्पति पद्मविभूषण-विभूषित}\\
+\vspace*{1mm}
+{\fontsize{18}{27}\selectfont महाकवि श्रीचित्रकूटतुलसीपीठाधीश्वर जगद्गुरु रामानन्दाचार्य}\\
+\vspace*{1mm}
+{\fontsize{26}{39}\selectfont \textbf{स्वामी रामभद्राचार्य}}\\
+\vspace*{2.5mm}
+{\fontsize{16}{22}\selectfont जीवन पर्यन्त कुलाधिपति}\\
+\vspace*{1mm}
+{\fontsize{16}{22}\selectfont जगद्गुरु रामभद्राचार्य दिव्याङ्ग विश्वविद्यालय, चित्रकूट}\\
+\vfill
+{\fontsize{16}{24}\selectfont द्वितीय संस्करण}\\
+\vspace*{2.5mm}
+\vfill
+{\fontsize{16}{24}\selectfont प्रकाशक}\\
+\vspace*{2.5mm}
+%\vspace*{1mm}
+{\fontsize{18}{27}\selectfont जगद्गुरु रामभद्राचार्य दिव्याङ्ग विश्वविद्यालय, चित्रकूट}\\
+\vspace*{2.5mm}
+{\fontsize{18}{27}\selectfont विक्रम संवत् २०७७}
+\vspace*{4.5mm}
+\end{center}
+\pagebreak
+\thispagestyle{empty}
+\begin{center}
+\vspace*{3.5mm}
+{\fontsize{15}{22.5}\selectfont \textbf{प्रकाशक}}\\
+\vspace*{1.25mm}
+{\fontsize{15}{22.5}\selectfont जगद्गुरु रामभद्राचार्य  दिव्याङ्ग विश्वविद्यालय}\\
+\vspace*{0.5mm}
+{\fontsize{15}{22.5}\selectfont कर्वी, चित्रकूट, उत्तरप्रदेश २१०२०४, भारत}\\
+\vspace*{0.5mm}
+{\englishfont \fontsize{11}{22.5}\selectfont www.jrhu.com}\\
+\vfill
+{\fontsize{15}{22.5}\selectfont प्रथम संस्करण: चित्रकूट, विक्रम संवत् २०७० (जनवरी २०१४)}\\
+\vspace*{1mm}
+{\fontsize{15}{22.5}\selectfont द्वितीय संस्करण: चित्रकूट, विक्रम संवत् २०७७ (जनवरी २०२१)}\\
+\vfill
+{\fontsize{15}{22.5}\selectfont न्यौछावर: ३०० रुपये मात्र}\\
+\vfill
+{\englishfont \fontsize{12}{13}\selectfont © }{\fontsize{15}{17.5}\selectfont २०१४–२०२१ स्वामी रामभद्राचार्य}\\
+\vfill
+{\englishfont \fontsize{11}{13}\selectfont ISBN-13: 978-93-82253-06-8}\\
+\vspace*{2.5mm}
+{\englishfont \fontsize{11}{13}\selectfont ISBN-10: 93-82253-06-8}\\
+\vfill
+\vfill
+{\fontsize{15}{17.5}\selectfont \textbf{चाणक्यसंस्कृत}में %और {\englishfont {\relscale{0.8} \textbf{Charis SIL}}}
+ अक्षर-संयोजन: नित्यानन्द मिश्र}\\
+\vfill
+{\fontsize{15}{17.5}\selectfont \textbf{मुद्रक}}\\{\englishfont \fontsize{11}{15}\selectfont Dhote Offset Technokrafts Pvt. Ltd.\\C/203 Sintofine Industrial Estate\\Vishweshwar Nagar Road, Goregaon (East)\\Mumbai 400063, India\\}
+\vspace*{3.5mm}
+\end{center}
+\end{titlepage}
+
+\mbox{}
+\thispagestyle{empty}
+\newpage
+\mbox{}
+\thispagestyle{empty}
+\newpage
+
+
+%\addcontentsline{toc}{chapter}{संकेताक्षर-सूची}
+\chapter*{संकेताक्षर-सूची}
+\thispagestyle{empty}
+\fontsize{16}{19}\selectfont
+\begin{longtable}{p{30mm}l}
+\input{ss}
+\end{longtable}
+\vspace*{2.5mm}
+\paraseplotus
+\cleardoublepage
+
+\fontsize{14}{15.75}\selectfont
+
+% \renewcommand{\contentsname}{विषय-सूची}
+\renewcommand{\contentsname}{\hfill विषय-सूची \hfill}   
+\renewcommand{\cftaftertoctitle}{\hfill}
+{\pdfbookmark[0]{विषय-सूची}{}
+\fancyhead[RE,LO]{}
+\fancyhead[LE,RO]{}
+\setlength\cftbeforechapskip{4mm}
+\setlength\cftbeforesecskip{2mm}
+\setlength\cftaftertoctitleskip{0pt}
+\tableofcontents
+\paraseplotus
+\cleardoublepage}
+
+\fancyhead[RO,LE]{\textmd{\Large(\thepage)}}
+
+\mainmatter
+\renewcommand\cftchappagefont{\fontsize{16}{21}\selectfont\devfont\bfseries}
+\renewcommand{\thepage}{\mdseries\devanagarinumeral{page}}
+
+\setcounter{footnote}{0}
+\justifying
+\phantomsection
+\addcontentsline{toc}{chapter}{संपादकीय}
+\chapter*{संपादकीय}
+\thispagestyle{empty}
+\fancyhead[CO]{{\textmd{\Large श्रीभक्तमाल (मूलार्थबोधिनी)}}}
+\fancyhead[CE]{{\textmd{\Large संपादकीय}}}
+\fontsize{16}{21}\selectfont
+\input{sampadakiya_two}
+\addcontentsline{toc}{chapter}{संपादकीय~(प्रथम~संस्करण)}
+\chapter*{संपादकीय~(प्रथम~संस्करण)}
+\input{sampadakiya}
+\cleardoublepage
+
+
+\setcounter{footnote}{0}
+\justifying
+\phantomsection
+\addcontentsline{toc}{chapter}{प्राक्कथन}
+\chapter*{प्राक्कथन}
+\thispagestyle{empty}
+\fancyhead[CO]{{\textmd{\Large श्रीभक्तमाल (मूलार्थबोधिनी)}}}
+\fancyhead[CE]{{\textmd{\Large प्राक्कथन}}}
+\input{prakkathana}
+\cleardoublepage
+
+\phantomsection
+\part*{श्रीभक्तमाल (मूलार्थबोधिनी टीका सहित)}
+
+\setcounter{footnote}{0}
+\justifying
+\phantomsection
+\addcontentsline{toc}{chapter}{पूर्वार्ध}
+\chapter*{पूर्वार्ध}
+\thispagestyle{empty}
+\fancyhead[CO]{{\textmd{\Large श्रीभक्तमाल (मूलार्थबोधिनी)}}}
+\fancyhead[CE]{{\textmd{\Large पूर्वार्ध}}}
+\input{purvardha}
+\cleardoublepage
+
+\setcounter{footnote}{0}
+\justifying
+\phantomsection
+\addcontentsline{toc}{chapter}{उत्तरार्ध}
+\chapter*{उत्तरार्ध}
+\thispagestyle{empty}
+\fancyhead[CO]{{\textmd{\Large श्रीभक्तमाल (मूलार्थबोधिनी)}}}
+\fancyhead[CE]{{\textmd{\Large उत्तरार्ध}}}
+\input{uttarardha}
+\cleardoublepage
+
+\setcounter{footnote}{0}
+\justifying
+\phantomsection
+\addcontentsline{toc}{chapter}{श्रीभक्तमालजीकी आरती}
+\chapter*{श्रीभक्तमालजीकी आरती}
+\thispagestyle{empty}
+\fancyhead[CO]{{\textmd{\Large श्रीभक्तमाल (मूलार्थबोधिनी)}}}
+\fancyhead[CE]{{\textmd{\Large श्रीभक्तमालजीकी आरती}}}
+\input{arati}
+\cleardoublepage
+
+\thispagestyle{empty}
+\ % The empty page
+\newpage
+
+% Back cover from the dust jacket PDF
+\includepdf[pages=1,trim=55.75mm 3mm 260.75mm 3mm,clip]{DustJacket}
+
+\end{document}

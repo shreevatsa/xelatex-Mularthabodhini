@@ -1,0 +1,11 @@
+Instructions to compile Mūlārthabodhinī XeLaTeX Source Code
+
+1) Unzip the zipped file
+
+2) Get the fonts (TTF files) for these four fonts: Arial Unicode MS (for unicode symbols), Charis SIL (for IAST with diacritics), Chanakya Sanskrit (for Devanagari), and Rupee Foradian (for rupee symbol). Put the files in the same directory as the LaTeX source. Charis SIL and Rupee Foradian are free fonts, Arial Unicode MS and Chanakya Sanskrit are not. The fonts are not provided with this source code. If you do not have these fonts, then you may use any other Unicode fonts (the final layout will be different) and accordingly change the font name in the lines with the \setmainfont and \newfontfamily commands 
+
+3) Compile the XeLaTeX file dustjacket.tex using XeLaTeX (this has been tested on XeLaTeX compiler in TeX Live version 2019). This will generate the DustJacket PDF.
+
+3) Compile the XeLaTeX file main.tex using XeLaTeX (this has been tested on XeLaTeX compiler in TeX Live version 2019)
+
+Note: The TeX files are not coded manually but generated from a set of shell scripts from an XML source which uses a non-standard custom XML. The XML files and the shell scripts are currently not available for public use.
