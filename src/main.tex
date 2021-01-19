@@ -26,10 +26,10 @@
   \fi
 }
 \makeatother
-\usepackage{emptypage}
-\usepackage{relsize}
-\usepackage{multicol}
-\usepackage{pdfpages}
+\usepackage{emptypage}  % Redefines \cleardoublepage such that the page possibly inserted before the next (odd-numbered) page has no page numbers or header.
+\usepackage{relsize}  % "\relscale{1.1875}" is used to typeset verses in a larger font.
+% \usepackage{multicol} % Not used; removing this doesn't affect the output.
+\usepackage{pdfpages} % Used for \includepdf for DustJacket.pdf (also for pulling in eso-pic package I guess)
 \usepackage{tocloft}
 \usepackage{calc}
 \usepackage{fancyhdr}
