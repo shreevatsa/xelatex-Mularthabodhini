@@ -1,5 +1,5 @@
 DustJacket.pdf: DustJacket.tex Bhaktamala2.png logo2.png \
-                ../ChanakyaSanskrit-Bold.ttf ../ChanakyaSanskrit-BoldItalic.ttf ../ChanakyaSanskrit-Italic.ttf ../ChanakyaSanskrit-Regular.ttf \
+                ../Cambay-Bold.ttf ../Cambay-BoldItalic.ttf ../Cambay-Italic.ttf ../Cambay-Regular.ttf \
                 ../CharisSILB.ttf ../CharisSILBI.ttf ../CharisSILI.ttf ../CharisSILR.ttf ../arialunicodems.ttf \
                 Rupee_Foradian.ttf
 	latexmk -pdfxe DustJacket.tex

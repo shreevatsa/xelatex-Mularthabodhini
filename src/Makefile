@@ -1,5 +1,5 @@
 main.pdf: DustJacket/DustJacket.pdf main.tex arati.tex lotus.png prakkathana.tex uttarardha.tex sampadakiya_two.tex sampadakiya.tex ss.tex uttarardha.tex \
-          ChanakyaSanskrit-Bold.ttf ChanakyaSanskrit-BoldItalic.ttf ChanakyaSanskrit-Italic.ttf ChanakyaSanskrit-Regular.ttf \
+          Cambay-Bold.ttf Cambay-BoldItalic.ttf Cambay-Italic.ttf Cambay-Regular.ttf \
           CharisSILB.ttf CharisSILBI.ttf CharisSILI.ttf CharisSILR.ttf arialunicodems.ttf
 	latexmk -pdfxe main.tex
 	# latexmk -c main.tex  # Doesn't remove the .xdv file
