@@ -152,6 +152,7 @@
 % Front cover from the dust jacket PDF
 \includepdf[pages=1,trim=257.75mm 3mm 58.75mm 3mm,clip]{DustJacket/DustJacket.pdf}
 
+% Page 3 of the PDF
 \begin{titlepage}
 \thispagestyle{empty}
 \begin{center}
@@ -159,6 +160,8 @@
 {\fontsize{20}{24}\selectfont \textbf{श्रीभक्तमाल—मूलार्थबोधिनी टीका सहित}}\\
 \end{center}
 \cleardoublepage
+
+% Page 5 of the PDF
 \thispagestyle{empty}
 \begin{center}
 \vspace*{4.5mm}
@@ -192,6 +195,8 @@
 \vspace*{4.5mm}
 \end{center}
 \pagebreak
+
+% Page 6 of the PDF
 \thispagestyle{empty}
 \begin{center}
 \vspace*{3.5mm}
@@ -224,6 +229,7 @@
 \end{center}
 \end{titlepage}
 
+% Two blank pages
 \mbox{}
 \thispagestyle{empty}
 \newpage
@@ -231,7 +237,7 @@
 \thispagestyle{empty}
 \newpage
 
-
+% Abbreviations, from file `ss.tex'
 %\addcontentsline{toc}{chapter}{संकेताक्षर-सूची}
 \chapter*{संकेताक्षर-सूची}
 \thispagestyle{empty}
@@ -243,8 +249,8 @@
 \paraseplotus
 \cleardoublepage
 
-\fontsize{14}{15.75}\selectfont
-
+% Table of contents, using \tableofcontents
+\fontsize{14}{15.75}\selectfont % Changing font size just for ToC
 % \renewcommand{\contentsname}{विषय-सूची}
 \renewcommand{\contentsname}{\hfill विषय-सूची \hfill}   
 \renewcommand{\cftaftertoctitle}{\hfill}
@@ -258,12 +264,13 @@
 \paraseplotus
 \cleardoublepage}
 
-\fancyhead[RO,LE]{\textmd{\Large(\thepage)}}
-
+% Done with all \frontmatter now; switch to \mainmatter
 \mainmatter
 \renewcommand\cftchappagefont{\fontsize{16}{21}\selectfont\devfont\bfseries}
 \renewcommand{\thepage}{\mdseries\devanagarinumeral{page}}
+\fancyhead[RO,LE]{\textmd{\Large(\thepage)}}
 
+% A "संपादकीय" chapter, from files `sampadakiya_two.tex' and `sampadakiya.tex'
 \setcounter{footnote}{0}
 \justifying
 \phantomsection
@@ -279,7 +286,7 @@
 \input{sampadakiya}
 \cleardoublepage
 
-
+% A "प्राक्कथन" chapter, from file `prakkathana.tex'
 \setcounter{footnote}{0}
 \justifying
 \phantomsection
@@ -291,9 +298,11 @@
 \input{prakkathana}
 \cleardoublepage
 
+% The start of the "main" part of the book
 \phantomsection
 \part*{श्रीभक्तमाल (मूलार्थबोधिनी टीका सहित)}
 
+% पूर्वार्ध from file `purvardha.tex'
 \setcounter{footnote}{0}
 \justifying
 \phantomsection
@@ -305,6 +314,7 @@
 \input{purvardha}
 \cleardoublepage
 
+% उत्तरार्ध from file `uttarardha.tex'
 \setcounter{footnote}{0}
 \justifying
 \phantomsection
@@ -316,6 +326,7 @@
 \input{uttarardha}
 \cleardoublepage
 
+% आरती from file `arati.tex'
 \setcounter{footnote}{0}
 \justifying
 \phantomsection
@@ -327,8 +338,9 @@
 \input{arati}
 \cleardoublepage
 
+% An empty page at the end
 \thispagestyle{empty}
-\ % The empty page
+\ % The empty page (could also have "\null" here)
 \newpage
 
 % Back cover from the dust jacket PDF
