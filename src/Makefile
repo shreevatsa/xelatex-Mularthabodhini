@@ -3,7 +3,12 @@ main.pdf: DustJacket/DustJacket.pdf main.tex arati.tex lotus.png prakkathana.tex
           CharisSILB.ttf CharisSILBI.ttf CharisSILI.ttf CharisSILR.ttf arialunicodems.ttf
 	latexmk -pdfxe main.tex
 	# latexmk -c main.tex  # Doesn't remove the .xdv file
-	# rm -f -v main.{aux,fdb_latexmk,fls,log,toc,xdv}
+
+clean:
+	rm -f -v main.{aux,fdb_latexmk,fls,log,toc,xdv}
+
+diff:
+	diff-pdf --skip-identical --mark-differences --view main-Cambay.pdf main.pdf
 
 # Not part of any target:
 #   COPYING

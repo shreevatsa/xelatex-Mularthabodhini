@@ -30,7 +30,7 @@
 \usepackage{relsize}  % "\relscale{1.1875}" is used to typeset verses in a larger font.
 % \usepackage{multicol} % Not used; removing this doesn't affect the output.
 \usepackage{pdfpages} % Used for \includepdf for DustJacket.pdf (also for pulling in eso-pic package I guess)
-\usepackage{tocloft}
+\usepackage{tocloft} % See \cftchapfont, ..., \cftbeforechapskip, ... \tableofcontents
 \usepackage{calc}
 \usepackage{fancyhdr}
 \usepackage{array}
@@ -45,7 +45,7 @@
 \SetWatermarkText{\mdseries PROOF}
 \SetWatermarkText{\mdseries }
 \SetWatermarkFontSize{4.5cm}
-\usepackage{setspace}
+% \usepackage{setspace} % Not used; removing this doesn't affect the output.
 \usepackage{lineno}
 \renewcommand\linenumberfont{\normalfont\bfseries\small}
 % Uncomment the following command for page wise line numbers (needed in proofreading stage)
@@ -78,10 +78,10 @@
 \def\efill{\hfill\nopagebreak}
 \usepackage{ragged2e}
 \raggedbottom
-\usepackage[base]{babel}
+% \usepackage[base]{babel} % Not used; removing this doesn't affect the output.
 \usepackage{polyglossia}
-%\usepackage{fontspec}
-\usepackage{metalogo}
+%\usepackage{fontspec} % Already loaded by polyglossia.
+% \usepackage{metalogo} % Not used; removing this doesn't affect the output.
 %\setmainfont{Charis SIL} 
 %\newfontfamily\nagarifont[Script=Devanagari]{NMCP}
 \setmainlanguage{hindi}
